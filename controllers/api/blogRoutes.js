@@ -19,6 +19,7 @@ router.post('/', async (req, res) => {
   // Get all Blog Posts
 router.get("/", async (req, res) => {
     try {
+        const data = req.params.id;
       const dbData = await Blog.findAll({include: {model:Comment}});
       if (dbData.length === 0) {
         return res.status(404).json({ msg: "no blogs in database!" });
