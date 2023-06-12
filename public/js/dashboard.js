@@ -12,7 +12,7 @@ document.querySelector("form").addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
-           location.reload()
+           location.href = "/"
         } else {
             alert("trumpet sound")
         }

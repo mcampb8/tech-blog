@@ -3,9 +3,9 @@ const router = express.Router();
 const {Blog, Comment} = require('../../Models');
 //Create a New Blog Post
 router.post('/', async (req, res) => {
-  if(!req.session.logged_in){
-    return res.status(403).json({msg:"login first!"})
-  }
+  // if(!req.session.logged_in){
+  //   return res.status(403).json({msg:"login first!"})
+  // }
   try {
     const newBlog = await Blog.create({
       ...req.body,

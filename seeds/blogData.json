@@ -1,14 +1,17 @@
 [
     {
      "title": "My First Blog Post",
-     "body": "This is the body of my first blog post"
+     "body": "This is the body of my first blog post",
+     "user_id": "1"
     },
     {
         "title": "My Second Blog Post",
-        "body": "This is the body of my second blog post"
+        "body": "This is the body of my second blog post",
+        "user_id": "2"
     },
     {
         "title": "My Third Blog Post",
-        "body": "This is the body of my third blog post"
+        "body": "This is the body of my third blog post",
+        "user_id": "3"
     }
   ]

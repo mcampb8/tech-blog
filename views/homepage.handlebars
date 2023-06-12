@@ -1,8 +1,15 @@
 <h1> homepage</h1>
 {{#each allBlogs}}
 
-<h3>{{title}}</h3>
-<p>{{user_id}}</p>
-<p>{{comment_id}}</p>
+<h3>Blog title: {{title}}</h3>
+<p>Full Blog Post: {{body}}</p>
+<p>Created by User: {{user.name}}</p>
+<p>Created on this Date:{{dateCreated}}</p>
+  {{> comments}}
+<form action="" id="comment-form">
+    <input type="text" placeholder="Leave a comment here" id="comment-input">
+   <button class="btn btn-primary" id="comment" data-blogID="{{id}}"> Post a Comment</button>
+</form>
 <hr>
 {{/each}}
+<script src="/js/homepage.js"></script>

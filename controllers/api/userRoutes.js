@@ -49,6 +49,20 @@ router.post('/', async (req, res) => {
       res.status(400).json(err);
     }
   });
+
+router.get('/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id);
+      req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+    console.log(err)
+  }
+});
   // Log a user out
   router.post('/logout', (req, res) => {
     if (req.session.logged_in) {

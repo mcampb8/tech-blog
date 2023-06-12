@@ -1,15 +1,16 @@
-<h2>{{name}}'s page</h2>
+<h2 id="username" data-id="id">{{name}}'s page</h2>
 <h3>Blog Posts</h3>
-{{#each blogs}}
-    <h3>Title: {{title}} </h3>
-    <p>{{body}}</p>
-    <p>Date Posted: {{dateCreated}}</p>
+{{#blogs}}
+    <h3 id="blog" data-id "{{this.id}}">Title: {{this.title}} </h3>
+    <p>{{this.body}}</p>
+    <p>Date Posted: {{this.dateCreated}}</p>
+    <button class="del-btn btn btn-primary" blog-id="{{id}}">Delete me!</button>
     {{#each comments}}
     <p>Comment : {{text}}</p>
-    {{/each}}
     <button class="del-btn btn btn-primary" blog-id="{{id}}">Delete me!</button>
+    {{/each}}
     <hr>
-{{/each}}
+{{/blogs}}
 
 <h3>Add a new Blog Post</h3>
 <form action="">

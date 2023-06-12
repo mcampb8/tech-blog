@@ -12,7 +12,23 @@ Comment.init({
     text:{
         type: DataTypes.STRING,
         allownull: false,
-    }
+    },
+    commenter: {
+        type: DataTypes.STRING,
+        allownull: false
+    },
+    date_created: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      blog_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'blog',
+          key: 'id',
+        },
+      },
 },
     {
         sequelize,
