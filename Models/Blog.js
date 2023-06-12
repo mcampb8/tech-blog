@@ -22,7 +22,14 @@ Blog.init(
             type: DataTypes.DATEONLY,
             defaultValue: Sequelize.NOW,
             allowNull: false
-        }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+              model: 'user',
+              key: 'id',
+            },
+          },
     },
         {
             sequelize,

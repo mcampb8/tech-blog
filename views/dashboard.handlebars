@@ -1,0 +1,21 @@
+<h2>{{name}}'s page</h2>
+<h3>Blog Posts</h3>
+{{#each blogs}}
+    <h3>Title: {{title}} </h3>
+    <p>{{body}}</p>
+    <p>Date Posted: {{dateCreated}}</p>
+    {{#each comments}}
+    <p>Comment : {{text}}</p>
+    {{/each}}
+    <button class="del-btn btn btn-primary" blog-id="{{id}}">Delete me!</button>
+    <hr>
+{{/each}}
+
+<h3>Add a new Blog Post</h3>
+<form action="">
+    <input type="text" id="title" placeholder="title">
+    <input type="text" id="body" placeholder="body">
+    <button class="btn btn-primary">Post!</button>
+</form>
+
+<script src="/js/dashboard.js"></script>

@@ -23,4 +23,19 @@ router.get("/login",(req,res)=>{
         logged_in:req.session.logged_in
     })
 })
+// Get all of a user's posts
+router.get("/dashboard",(req,res)=>{
+    if(!req.session.logged_in){
+        return res.redirect("/login")
+    } else {
+        User.findByPk(req.session.user_id,{
+            include:[Blog]
+        }).then(userData=>{
+            const hbsData = userData.get({plain:true})
+            console.log(hbsData)
+            hbsData.logged_in=req.session.logged_in;
+            res.render("dashboard",hbsData)
+        })
+    }
+})
 module.exports = router;
