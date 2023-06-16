@@ -1,6 +1,9 @@
 {{#each comments}}
 <p>Comment: {{text}}</p>
 <p>Commenter: {{commenter}} on {{date_created}}</p>
+<button class = "update-btn btn btn-primary" data-blogID="{{id}}">Update Me!</button>
+<input type="text" placeholder="Input your updated comment here" id="comment-input-{{id}}"/>
+<button class ="delete-btn btn btn-primary">Delete Me!</button>
 </div>
 </div>
 {{/each}}

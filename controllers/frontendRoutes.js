@@ -7,8 +7,6 @@ router.get("/", (req, res) => {
         include: [User, Comment]
     }).then(blogData => {
         const hbsData = blogData.map(blog => blog.get({ plain: true }));
-        // console.log(hbsData);
-        console.log("Session USERID", req.session.user_id);
         User.findByPk(req.session.user_id).then(userData => {
             console.log(userData);
             const plainUser = userData.get({ plain: true });
@@ -19,7 +17,8 @@ router.get("/", (req, res) => {
             })
         })
     })
-});
+  
+    });
 router.get("/login", (req, res) => {
     if (req.session.logged_in) {
         return res.redirect("/dashboard")
@@ -43,4 +42,5 @@ router.get("/dashboard", (req, res) => {
         })
     }
 })
+
 module.exports = router;

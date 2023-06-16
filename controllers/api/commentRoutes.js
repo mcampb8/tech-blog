@@ -25,6 +25,29 @@ router.get("/", async (req, res) => {
       return res.status(500).json({ msg: "could not get comments", err: err });
     }
   });
+   //Update a Comment
+   router.put("/:id", (req, res) => {
+    if(!req.session.logged_in){
+      return res.status(403).json({msg:"login first!"})
+    }
+    Comment.update(
+      {
+        text: req.body.text
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then((updatedComment) => {
+        res.json(updatedComment);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
+      });
+  });
     //Delete a Comment
     router.delete('/:id', async (req, res) => {
       if(!req.session.logged_in){

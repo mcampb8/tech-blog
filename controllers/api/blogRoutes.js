@@ -54,4 +54,25 @@ router.get("/", async (req, res) => {
       res.status(500).json(err);
     }
   });
+  //Update a Blog Post
+  router.put("/:id", (req, res) => {
+    Blog.update(
+      {
+        title: req.body.title,
+        body: req.body.body
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then((updatedBlog) => {
+        res.json(updatedBlog);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
+      });
+  });
 module.exports = router;
