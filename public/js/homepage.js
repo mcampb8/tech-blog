@@ -46,3 +46,19 @@ for (let i = 0; i < updatebtns.length; i++) {
         location.reload()
     })
 }
+const allDelBtns = document.querySelectorAll(".delete-btn");
+allDelBtns.forEach(button=>{
+    button.addEventListener("click",()=>{
+        const idToDel = button.getAttribute("comment-id");
+        console.log(idToDel);
+        fetch(`/api/comments/${idToDel}`,{
+            method:"DELETE",
+        }).then(res=>{
+            if(res.ok){
+                location.reload()
+            } else {
+                alert("trumpet sound")
+            }
+        })
+    })
+})

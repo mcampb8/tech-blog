@@ -25,6 +25,22 @@ router.get("/", async (req, res) => {
       return res.status(500).json({ msg: "could not get comments", err: err });
     }
   });
+    // get comment by id
+    router.get("/:id", (req, res) => {
+      Comment.findByPk(req.params.id)
+        .then((comment) => {
+          if (!comment) {
+            return res
+              .status(404)
+              .json({ msg: "no comment with that id in database!" });
+          }
+          res.json(comment);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({ msg: "error occurred", err });
+        });
+    });
    //Update a Comment
    router.put("/:id", (req, res) => {
     if(!req.session.logged_in){
