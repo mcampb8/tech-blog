@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {Blog, Comment} = require('../../Models');
+const {User, Blog, Comment} = require('../../Models');
 //Create a New Blog Post
 router.post('/', async (req, res) => {
   // if(!req.session.logged_in){
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 router.get("/", async (req, res) => {
     try {
         const data = req.params.id;
-      const dbData = await Blog.findAll({include: {model:Comment}});
+      const dbData = await Blog.findAll({include: [User, Comment]});
       if (dbData.length === 0) {
         return res.status(404).json({ msg: "no blogs in database!" });
       }

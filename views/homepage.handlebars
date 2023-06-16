@@ -1,15 +1,14 @@
 <h1> homepage</h1>
+<input type="hidden" value="{{authUser.name}}" id="auth-user"/>
 {{#each allBlogs}}
 
 <h3>Blog title: {{title}}</h3>
 <p>Full Blog Post: {{body}}</p>
 <p>Created by User: {{user.name}}</p>
 <p>Created on this Date:{{dateCreated}}</p>
-  {{> comments}}
-<form action="" id="comment-form">
-    <input type="text" placeholder="Leave a comment here" id="comment-input">
-   <button class="btn btn-primary" id="comment" data-blogID="{{id}}"> Post a Comment</button>
-</form>
+{{> comments}}
+<input type="text" placeholder="Leave a comment here" id="comment-input-{{id}}"/>
+<button class="btn btn-primary comment-btn"data-blogID="{{id}}" > Post a Comment</button>
 <hr>
 {{/each}}
 <script src="/js/homepage.js"></script>
