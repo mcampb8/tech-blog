@@ -9,13 +9,21 @@ router.get("/", (req, res) => {
         const hbsData = blogData.map(blog => blog.get({ plain: true }));
         User.findByPk(req.session.user_id).then(userData => {
             console.log(userData);
+            if(userData){
             const plainUser = userData.get({ plain: true });
             res.render("homepage", {
                 allBlogs: hbsData,
                 authUser: plainUser,
                 logged_in: req.session.logged_in
-            })
-        })
+            })}else{
+                res.render("homepage", {
+                    allBlogs: hbsData,
+                    logged_in: req.session.logged_in
+                })
+
+            }
+        }
+        )
     })
   
     });
